@@ -1,0 +1,39 @@
+vertice1:
+	verticeArista:
+		distancia:1
+		anchoDeBanda:1
+		usuariosConectados:1
+		cantidadDeTrafico:1
+		tipoDeMedio:CAT5
+	verticeArista:
+		distancia:1
+		anchoDeBanda:1
+		usuariosConectados:1
+		cantidadDeTrafico:1
+		tipoDeMedio:CAT6
+	verticeDeArista:
+		distancia:1
+		anchoDeBanda:1
+		usuariosConectados:1
+		cantidadDeTrafico:1
+		tipoDeMedio:Fibra-Optica
+vertice2:
+	verticeDeArista:
+		distancia:1
+		anchoDeBanda:1
+		usuariosConectados:1
+		cantidadDeTrafico:1
+		tipoDeMedio:WIFI
+vertice3:
+	verticeDeArista:
+		distancia:1
+		anchoDeBanda:1
+		usuariosConectados:1
+		cantidadDeTrafico:1
+		tipoDeMedio:Coaxial
+	verticeDeArista:
+		distancia:1
+		anchoDeBanda:1
+		usuariosConectados:1
+		cantidadDeTrafico:1
+		tipoDeMedio:Par-Trenzado
