@@ -30,7 +30,7 @@ vertex.setEdgeWith("F", 6)
 vertex.setEdgeWith("G", 2)
 vertex.setEdgeWith("H", 10)
 
-#print("%s: %s"%(vertex.name, vertex.getEdges()))
+print("%s: %s"%(vertex.name, vertex.getEdges()))
 
 #Por cada elemento en la lista de jsons
 for edge in vertex.getEdges():
