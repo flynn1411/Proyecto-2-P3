@@ -10,13 +10,30 @@ class Ventana(QWidget):
 		self.ui.txtText2.setText("Nodo Origen")
 		self.ui.txtText3.setText("Nodo Destino")
 	def CargarArchivo(self):
-		filename = open("memoria.txt","r")
-		datos = filename.read()
-		print(datos)
-		self.ui.txtText1.setText(datos)
-		datos = filename
-		for dato in filename:
-			print(dato)
+		#filename = open("memoria.txt","r")
+		#datos = filename.read()
+		#print(datos)
+		#self.ui.txtText1.setText(datos)
+		#datos = filename
+		self.openFileNameDialog()
+		self.saveFileDialog()
+		self.show()
+	
+	def openFileNameDialog(self):
+		options = QFileDialog.Options()
+		options |= QFileDialog.DontUseNativeDialog
+		filename, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()","","All Files (*);;Python Files (*.py)", options = options)
+		directorio = filename
+		archivo = open(directorio,"r")
+		content = archivo.read()
+		print(content)
+		self.ui.txtText1.setText(content)
+
+	def saveFileDialog(self):
+		options = QFileDialog.Options()
+		options |= QFileDialog.DontUseNativeDialog
+		filename, _ = QFileDialog.getOpenFileName(self,"QFileDialog.getOpenFileName()","","All Files (*);;Python Files (*.py)", options = options)
+
 if __name__ == "__main__":
 	mi_aplicacion = QApplication(sys.argv)
 	mi_app = Ventana()
