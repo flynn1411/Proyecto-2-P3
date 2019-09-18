@@ -9,6 +9,7 @@ class Ventana(QWidget):
 		self.ui.btnCargarArchivo.clicked.connect(self.CargarArchivo)
 		self.ui.txtText2.setText("Nodo Origen")
 		self.ui.txtText3.setText("Nodo Destino")
+		
 	def CargarArchivo(self):
 		#filename = open("memoria.txt","r")
 		#datos = filename.read()

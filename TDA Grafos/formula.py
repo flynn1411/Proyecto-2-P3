@@ -1,13 +1,16 @@
 #Formula para el peso
 import math
 """
-FORMULA = (confiabilidad * ancho) - (usuarios + trafico)
+FORMULA = anchoDeBanda/confiabilidad - anchoDeBanda
+
+Formula = 
+
 hola = {"A": "holaaa"}
 
-*distancia,
-ancho de banda,
-cantidad de usuarios,
-cantidad de trafico,
+* ^distancia (+),
+* ^ancho de banda (-),
+  ^cantidad de usuarios (+),
+  ^cantidad de trafico (+),
 *tipo de medio(relacion con la distancia)
 
 Confiabilidad(double trust, double distance, trustworthiness = 1):
@@ -89,10 +92,15 @@ def getTrust(mediumType, distance):
             n = math.floor(distance/100)
             trust = 0.0001*n
 
-    return (float(trustworthiness) - trust)
+    return (float(trustworthiness) - trustworthiness*trust)
 
-formula1 = (getTrust("WIFI", 6)*15) -(3 + 4)
-print(formula1)
 
-formula2 = (getTrust("WIFI", 4)*10) -(1 + 4)
-print(formula2)
+def getWeight(distance, bandwidth, users, traffic, medium):
+
+    return round( ((bandwidth/getTrust(medium, distance) - bandwidth)*(users*traffic)) , 2)
+
+
+print(getWeight(12, 20, 20, 20, "WIFI"))
+print(getWeight(12, 20, 2, 10, "WIFI"))
+print(getWeight(5, 20, 1, 2, "WIFI"))
+print(getWeight(5, 20, 1000000, 2, "WIFI"))
