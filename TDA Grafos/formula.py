@@ -63,44 +63,32 @@ def getTrust(mediumType, distance):
     trust = 0.00
 
     if(mediumType == "CAT5"):
-        if (distance >= 50):
-            n = math.floor(distance/50)
-            trust = 0.0002*n
+        n = distance/50
+        trust = 0.0002*n
 
     elif(mediumType == "CAT6"):
-        if (distance >= 50):
-            n = math.floor(distance/50)
-            trust = 0.0001*n
+        n = distance/50
+        trust = 0.0001*n
 
     elif(mediumType == "Fibra"):
-        if (distance >= 100):
-            n = math.floor(distance/100)
-            trust = 0.0005*n
+        n = distance/100
+        trust = 0.0005*n
 
     elif(mediumType == "WIFI"):
-        if (distance >= 6):
-            n = math.floor(distance/6)
-            trust = 0.006*n
+        n = distance/6
+        trust = 0.006*n
 
     elif(mediumType == "Coaxial"):
-        if (distance >= 100):
-            n = math.floor(distance/100)
-            trust = 0.0004*n
+        n = distance/100
+        trust = 0.0004*n
 
     else:
-        if(distance >= 100):
-            n = math.floor(distance/100)
-            trust = 0.0001*n
+        n = distance/100
+        trust = 0.0001*n
 
     return (float(trustworthiness) - trustworthiness*trust)
 
 
 def getWeight(distance, bandwidth, users, traffic, medium):
 
-    return round( ((bandwidth/getTrust(medium, distance) - bandwidth)*(users*traffic)) , 2)
-
-
-print(getWeight(12, 20, 20, 20, "WIFI"))
-print(getWeight(12, 20, 2, 10, "WIFI"))
-print(getWeight(5, 20, 1, 2, "WIFI"))
-print(getWeight(5, 20, 1000000, 2, "WIFI"))
+    return round( ((bandwidth/getTrust(medium, distance) - bandwidth) + ((users+traffic)/bandwidth  )) , 3)
