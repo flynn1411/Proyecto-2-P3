@@ -43,7 +43,7 @@ class Ui_Form(object):
         from creatTable import tablePage
         #instancia 
         b = tablePage()
-        tabla = "La tabla del trafico \n ---------------------- \n\t%s\t|\t%s " %("Tamaño" , "12in")
+        tabla = "La tabla del trafico \n ---------------------- \n\t%s\t|\t%s " %("pene" , "12in")
         b.textEdit.setText(tabla)
         b.exec_()
 

@@ -15,30 +15,41 @@ class Graph:
         if not (destinationVertex.name in self.vertices["%s"%originVertex.name].edges):
             originVertex.setEdgeWith(destinationVertex.name, weight)
 
-    def findPaths(self, vertex, destination, path = [], visited = [], weight = 0, route = 0):
-        #Agrego el vertice actual a la ruta y lo marco como visitado(para evitar ciclos)
-        paths = {}
-        visited.append(vertex)
-        path.append(vertex)
+    def getAllPaths(self, currentVertex, destination, visited = [], path = [], fullPath = [], weight = 0):
+       # get vertex, it is now visited and should be added to path
+       vertex = self.vertices[currentVertex]
+       visited.append(currentVertex)
+       path.append(vertex.name)
 
-        #Si el vertice actual es mi destino, imprimo la ruta seguida
-        if (vertex == destination):
-            route
-            paths["Ruta%s" %route] = {"path": path, "weight": weight}
-            print("La ruta: %s con el peso %s"%(path, weight))
+       # save current path if we found end
+       if (currentVertex == destination):
+           fullPath.append({"weight": weight, "path": list(path)})
 
-        #Si no es el destino, se iteran las aristas del vertice actual
-        else:
-            for edge, value in self.vertices["%s" %vertex].edges.items():
-                #Si la arista actual no se encuentra en los visitados, se llama recursivamente la función 
-                #para seguir avanzando
-                if(not edge in visited):
-                    self.findPaths(edge, destination, path, visited, weight+value, route)
+       for edge, value in vertex.edges.items():
+           if edge not in visited:
+               #self.vertices[edge].currCost = vertex.get_cost(edge) + vertex.currCost
+               self.getAllPaths(edge, destination, visited, path, fullPath, weight + value)
 
-        #Luego de encontrar el destino, se retrocede un paso para poder buscar mas posibles caminos
-        path.pop()
-        visited.pop()
-        print(paths)
+       # continue finding paths by popping path and visited to get accurate paths
+       path.pop()
+       visited.pop()
+
+       if not path:
+           return fullPath
+
+    def sortPaths(self, array):
+        #Setting the range for comparison (first round: n, second round: n-1  and so on)
+        for i in range(len(array)-1,0,-1):
+            #Comparing within set range
+            for j in range(i):
+                #Comparing element with its right side neighbor
+                if array[j]["weight"] > array[j+1]["weight"]:
+                    #swapping
+                    temp = array[j]
+                    array[j] = array[j+1]
+                    array[j+1] = temp
+
+        return array
 
 
 g = Graph()
@@ -47,14 +58,14 @@ g.addVertex("B")
 g.addVertex("C")
 g.addVertex("D")
 
-g.addEdge("A", "B", 2)
-g.addEdge("A", "C", 3)
+g.addEdge("A", "B", 4)
+g.addEdge("A", "C", 2.5)
 
-g.addEdge("B", "C", 1)
+g.addEdge("B", "C", 0.5)
 g.addEdge("B", "A", 2)
 g.addEdge("B", "D", 4)
 
-g.addEdge("C", "D", 3)
+g.addEdge("C", "D", 1)
 g.addEdge("C", "A", 3)
 g.addEdge("C", "B", 1)
 
@@ -66,9 +77,20 @@ for k,v in g.vertices.items():
     print("%s: %s" %(k, v.edges))
 
 print("\n")
-g.findPaths("A", "D")
-"""paths = g.findPaths("A", "D")
+paths = g.getAllPaths("A", "D")
 print("\n")
+for path in paths:
+    weight = path["weight"]
+    actualPath = path["path"]
 
-for k,v in paths.items():
-    print("%s: %s" %(k, v))"""
+    print("El camino es %s con peso total de %s" %(actualPath, weight))
+
+print("\nSorteados de menor mayor:")
+
+sortedPaths = g.sortPaths(paths)
+
+for path in sortedPaths:
+    weight = path["weight"]
+    actualPath = path["path"]
+
+    print("El camino es %s con peso total de %s" %(actualPath, weight))
