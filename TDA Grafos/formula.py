@@ -91,4 +91,9 @@ def getTrust(mediumType, distance):
 
 def getWeight(distance, bandwidth, users, traffic, medium):
 
-    return round( ((bandwidth/getTrust(medium, distance) - bandwidth) + ((users+traffic)/bandwidth  )) , 3)
+    return round( ((bandwidth/getTrust(medium, distance) - bandwidth) + ((users+traffic)/bandwidth  ))*10 , 3)
+
+
+print(getWeight(1, 5, 1, 2, "WIFI"))
+print(getWeight(1, 5, 2, 5, "WIFI"))
+print(getWeight(100, 20, 10, 20, "WIFI"))

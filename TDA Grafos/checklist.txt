@@ -1,7 +1,7 @@
 *-------------------------Checklist(Programa)-------------------------*
 1.Crear UI (Done)
 2.TDA de Grafo con JSON (Done)
-3.Cargado de Grafo desde archivo de texto plano (Casi)
+3.Cargado de Grafo desde archivo de texto plano (Done)
 4.Formula para el peso (Done)
 6.Tabla ASCII (Missing - Fernando)
 7.Foto de Grafo (Casi)

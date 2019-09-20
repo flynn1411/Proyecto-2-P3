@@ -15,29 +15,30 @@ class Graph:
         if not (destinationVertex.name in self.vertices["%s"%originVertex.name].edges):
             originVertex.setEdgeWith(destinationVertex.name, weight)
 
-    def findPaths(self, origin, destination, pathNumber = 1, paths = {}, currentPath = [], visited = [], totalWeight = 0):
+    def findPaths(self, vertex, destination, path = [], visited = [], weight = 0, route = 0):
         #Agrego el vertice actual a la ruta y lo marco como visitado(para evitar ciclos)
-        visited.append(origin)
-        currentPath.append(origin)
+        paths = {}
+        visited.append(vertex)
+        path.append(vertex)
 
         #Si el vertice actual es mi destino, imprimo la ruta seguida
-        if (origin == destination):
-            paths["Ruta no. %s" %pathNumber] = currentPath
-            pathNumber += 1
-            print("La ruta: %s con el peso %s"%(currentPath, totalWeight))
+        if (vertex == destination):
+            route
+            paths["Ruta%s" %route] = {"path": path, "weight": weight}
+            print("La ruta: %s con el peso %s"%(path, weight))
 
         #Si no es el destino, se iteran las aristas del vertice actual
         else:
-            for edge, weight in self.vertices[origin].edges.items():
+            for edge, value in self.vertices["%s" %vertex].edges.items():
                 #Si la arista actual no se encuentra en los visitados, se llama recursivamente la función 
                 #para seguir avanzando
                 if(not edge in visited):
-                    self.findPaths(edge, destination, pathNumber, paths, currentPath, visited, totalWeight+(weight))
+                    self.findPaths(edge, destination, path, visited, weight+value, route)
 
         #Luego de encontrar el destino, se retrocede un paso para poder buscar mas posibles caminos
-        currentPath.pop()
+        path.pop()
         visited.pop()
-        return paths
+        print(paths)
 
 
 g = Graph()
@@ -65,7 +66,9 @@ for k,v in g.vertices.items():
     print("%s: %s" %(k, v.edges))
 
 print("\n")
-paths = g.findPaths("A", "D")
+g.findPaths("A", "D")
+"""paths = g.findPaths("A", "D")
 print("\n")
+
 for k,v in paths.items():
-    print("%s: %s" %(k, v))
+    print("%s: %s" %(k, v))"""
