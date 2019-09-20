@@ -35,6 +35,17 @@ class Ui_Form(object):
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
+        
+        self.btnCrearTabla.clicked.connect(self.creatTable)
+	
+
+    def creatTable(slef):
+        from creatTable import tablePage
+        #instancia 
+        b = tablePage()
+        tabla = "La tabla del trafico \n ---------------------- \n %s | %s " %(camino , peso)
+        b.textEdit.setText(tabla)
+        b.exec_()
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
