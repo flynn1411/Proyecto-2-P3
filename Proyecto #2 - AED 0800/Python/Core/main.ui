@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>491</width>
+    <height>544</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Ventana  Principal (main.py)</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="2">
+    <widget class="QTextEdit" name="txtText1"/>
+   </item>
+   <item row="1" column="0">
+    <widget class="QTextEdit" name="txtText2"/>
+   </item>
+   <item row="1" column="1">
+    <widget class="QTextEdit" name="txtText3"/>
+   </item>
+   <item row="2" column="0">
+    <widget class="QPushButton" name="btnCargarArchivo">
+     <property name="text">
+      <string>Cargar Archivo</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QPushButton" name="btnCrearMapa">
+     <property name="text">
+      <string>Crear Mapa</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="QPushButton" name="btnCrearTabla">
+     <property name="text">
+      <string>Crear Tabla</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>btnCargarArchivo</sender>
+   <signal>clicked()</signal>
+   <receiver>Form</receiver>
+   <slot>show()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>157</x>
+     <y>393</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>616</x>
+     <y>292</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

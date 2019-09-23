@@ -24,6 +24,12 @@ B:
   usuariosConectados:2
   cantidadDeTrafico:20
   tipoDeMedio:CAT5
+ C:
+  distancia:200
+  AnchoDeBanda:75
+  usuariosConectados:15
+  cantidadDeTrafico:30
+  tipoDeMedio:Fibra-Optica
 C:
  A:
   distancia:32
@@ -31,6 +37,18 @@ C:
   usuariosConectados:24
   cantidadDeTrafico:21
   tipoDeMedio:WIFI
+ B:
+  distancia:200
+  AnchoDeBanda:75
+  usuariosConectados:15
+  cantidadDeTrafico:30
+  tipoDeMedio:Fibra-Optica
+ D:
+  distancia:23
+  AnchoDeBanda:50
+  usuariosConectados:2
+  cantidadDeTrafico:20
+  tipoDeMedio:CAT5
 D:
  A:
   distancia:23

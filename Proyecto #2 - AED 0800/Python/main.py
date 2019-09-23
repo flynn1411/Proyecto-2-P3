@@ -11,12 +11,44 @@ class Ventana(QWidget):
 		self.ui = Ui_Form()
 		self.ui.setupUi(self)
 		self.ui.btnCargarArchivo.clicked.connect(self.CargarArchivo)
+		self.ui.btnCrearTabla.clicked.connect(self.creatTable)
 		self.ui.btnCrearMapa.clicked.connect(self.CreateMap)
-		self.ui.txtText2.setText("Nodo Origen")
-		self.ui.txtText3.setText("Nodo Destino")
-		self.actualArchive = ''
-
 	
+	#Crear la tabla hasta la linea 40
+	def creatTable(self):
+		from creatTable import tablePage
+		b = tablePage()
+		#Obtener el string de las cajas de texto de la interfaz 
+		origin = self.ui.txtText2.toPlainText()
+		destination = self.ui.txtText3.toPlainText()
+
+		array = self.actualFile.split('\n')
+		loader = Loader()
+		loader.load(array)
+
+		#escribir en la tabla 
+		b.textEdit.setText(Ventana.pathsToTable("none", loader.G.getAllPaths(origin, destination), origin, destination))
+		b.exec_()
+	
+	def pathsToTable(self,path,origin,destination):
+
+		table = []
+		tabs = "-"*(71)
+		#titulo de la tabla 
+		header = "%s\n\t\tRutas de %s a %s\n%s\n\tPeso\t|\tRutas\n%s" %(tabs , origin , destination , tabs, tabs)
+		table.append(header)
+
+		#recorrer el arreglo para agregar sus elementos a la tabla 
+		for i in path:
+			currentPath = ""
+			for v in range (len(i["path"])-1):
+				currentPath += ("%s, " %i["path"][v])
+			currentPath += i["path"][len(i["path"])-1]
+
+			table.append("\n\t%s\t|\t%s\n%s" %(i["weight"], currentPath,tabs) )
+		
+		return "".join(table)
+		
 	def CargarArchivo(self):
 		#filename = open("memoria.txt","r")
 		#datos = filename.read()
@@ -36,10 +68,11 @@ class Ventana(QWidget):
 		archivo = open(directorio,"r")
 		content = archivo.read()
 		self.ui.txtText1.setText(content)
-		self.actualArchive = self.ui.txtText1.toPlainText()
-		print(self.actualArchive)
+		self.actualFile = self.ui.txtText1.toPlainText()
+		print(self.actualFile)
+
 	def CreateMap(self):
-		array = self.actualArchive.split('\n')
+		array = self.actualFile.split('\n')
 		loader = Loader()
 		loader.load(array)
 		G=nx.DiGraph()
@@ -54,8 +87,7 @@ class Ventana(QWidget):
 		nx.draw_networkx(G,pos,with_labes=True)
 		plt.savefig("Grafo.jpg")
 		pylab.show()
-
-
+	
 
 if __name__ == "__main__":
 	mi_aplicacion = QApplication(sys.argv)

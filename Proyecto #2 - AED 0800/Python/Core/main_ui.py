@@ -13,39 +13,31 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(497, 564)
+        Form.resize(491, 544)
+        self.gridLayout = QtWidgets.QGridLayout(Form)
+        self.gridLayout.setObjectName("gridLayout")
         self.txtText1 = QtWidgets.QTextEdit(Form)
-        self.txtText1.setGeometry(QtCore.QRect(30, 20, 431, 211))
         self.txtText1.setObjectName("txtText1")
+        self.gridLayout.addWidget(self.txtText1, 0, 0, 1, 2)
         self.txtText2 = QtWidgets.QTextEdit(Form)
-        self.txtText2.setGeometry(QtCore.QRect(30, 250, 191, 91))
         self.txtText2.setObjectName("txtText2")
+        self.gridLayout.addWidget(self.txtText2, 1, 0, 1, 1)
         self.txtText3 = QtWidgets.QTextEdit(Form)
-        self.txtText3.setGeometry(QtCore.QRect(270, 250, 191, 91))
         self.txtText3.setObjectName("txtText3")
+        self.gridLayout.addWidget(self.txtText3, 1, 1, 1, 1)
         self.btnCargarArchivo = QtWidgets.QPushButton(Form)
-        self.btnCargarArchivo.setGeometry(QtCore.QRect(50, 360, 151, 71))
         self.btnCargarArchivo.setObjectName("btnCargarArchivo")
+        self.gridLayout.addWidget(self.btnCargarArchivo, 2, 0, 1, 1)
         self.btnCrearMapa = QtWidgets.QPushButton(Form)
-        self.btnCrearMapa.setGeometry(QtCore.QRect(280, 360, 151, 71))
         self.btnCrearMapa.setObjectName("btnCrearMapa")
+        self.gridLayout.addWidget(self.btnCrearMapa, 2, 1, 1, 1)
         self.btnCrearTabla = QtWidgets.QPushButton(Form)
-        self.btnCrearTabla.setGeometry(QtCore.QRect(160, 450, 151, 71))
         self.btnCrearTabla.setObjectName("btnCrearTabla")
+        self.gridLayout.addWidget(self.btnCrearTabla, 3, 0, 1, 2)
 
         self.retranslateUi(Form)
+        self.btnCargarArchivo.clicked.connect(Form.show)
         QtCore.QMetaObject.connectSlotsByName(Form)
-        
-        self.btnCrearTabla.clicked.connect(self.creatTable)
-	
-
-    def creatTable(slef):
-        from creatTable import tablePage
-        #instancia 
-        b = tablePage()
-        tabla = "La tabla del trafico \n ---------------------- \n\t%s\t|\t%s " %("pene" , "12in")
-        b.textEdit.setText(tabla)
-        b.exec_()
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate

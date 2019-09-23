@@ -44,18 +44,22 @@ class Loader:
         trust = 0.00
 
         if(mediumType == "CAT5"):
+            trustworthiness = 0.98
             n = math.floor(distance/50)
             trust = 0.0002*n
 
         elif(mediumType == "CAT6"):
+            trustworthiness = 0.98
             n = math.floor(distance/50)
             trust = 0.0001*n
 
-        elif(mediumType == "Fibra"):
+        elif(mediumType == "Fibra-Optica"):
+            trustworthiness = 0.90
             n = math.floor(distance/100)
             trust = 0.0005*n
 
         elif(mediumType == "WIFI"):
+            trustworthiness = 0.7
             n = math.floor(distance/6)
             trust = 0.006*n
 
@@ -73,13 +77,3 @@ class Loader:
     def getWeight(self, distance, bandwidth, users, traffic, medium):
 
         return round( ((bandwidth/self.getTrust(medium, distance) - bandwidth)+( (users+traffic)/bandwidth))*10 , 2)
-
-
-
-array = open('TextGraph.txt','r').read().split('\n')
-
-loader = Loader()
-loader.load(array)
-
-for k,v in loader.G.vertices.items():
-    print("%s: %s" %(k, v.edges))
