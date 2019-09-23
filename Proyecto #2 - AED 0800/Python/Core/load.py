@@ -1,5 +1,5 @@
 import math
-from graph import *
+from Core.graph import *
 
 class Loader:
     def __init__(self):

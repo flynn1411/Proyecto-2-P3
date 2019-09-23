@@ -1,6 +1,7 @@
 import sys
-from main_ui import *
-from load import*
+from Core.main_ui import *
+from Core.load import*
+from Core.creatTable import tablePage
 from PyQt5.QtWidgets import *
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -16,7 +17,6 @@ class Ventana(QWidget):
 	
 	#Crear la tabla hasta la linea 40
 	def creatTable(self):
-		from creatTable import tablePage
 		b = tablePage()
 		#Obtener el string de las cajas de texto de la interfaz 
 		origin = self.ui.txtText2.toPlainText()
@@ -85,7 +85,7 @@ class Ventana(QWidget):
 		edge_labels=dict([((u,v,),d['weight'])for u,v,d in G.edges(data=True)])
 		nx.draw_networkx_edge_labels(G,pos,edge_labels=edge_labels)
 		nx.draw_networkx(G,pos,with_labes=True)
-		plt.savefig("Grafo.jpg")
+		plt.savefig("Core/Grafo.jpg")
 		pylab.show()
 	
 

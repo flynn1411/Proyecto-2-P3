@@ -8,4 +8,4 @@ class tablePage(QDialog):
     def __init__(self):
 
         super(tablePage, self).__init__()
-        loadUi('tabla.ui', self)
+        loadUi('Core/tabla.ui', self)
