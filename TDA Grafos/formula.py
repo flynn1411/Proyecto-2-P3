@@ -91,8 +91,8 @@ def getTrust(mediumType, distance):
 
     return (float(trustworthiness) - trust)
 
-formula1 = (getTrust("WIFI", 6)*15) -(3 + 4)
-print(formula1)
+formula1 = (getTrust("WIFI", 6)/15) +(3 + 4)
+print(round(formula1,2))
 
-formula2 = (getTrust("WIFI", 4)*10) -(1 + 4)
-print(formula2)
+formula2 = (getTrust("WIFI", 4)/10) +(1 + 4)
+print(round(formula2,2))
