@@ -19,22 +19,3 @@ class Vertex:
         #Se retornan las aristas como un arreglo de diccionarios de la siguiente manera:
         # {vertice: {peso: valor} }, esto asegura un mejor acceso a las aristas de dicho vertice
         return [{str(key) : { "weight": value}} for key, value in self.edges.items()]
-
-#*-------------Pruebas---------------------------*
-vertex = Vertex("A")
-vertex.setEdgeWith("B", 3)
-vertex.setEdgeWith("C", 12)
-vertex.setEdgeWith("D", 7)
-vertex.setEdgeWith("E", 5)
-vertex.setEdgeWith("F", 6)
-vertex.setEdgeWith("G", 2)
-vertex.setEdgeWith("H", 10)
-
-print("%s: %s"%(vertex.name, vertex.getEdges()))
-
-#Por cada elemento en la lista de jsons
-for edge in vertex.getEdges():
-    #iterar cada llave y su valor
-    for key, value in edge.items():
-        #para imprimir la llave y su peso
-        print("%s: %s" %(key, value["weight"]))
