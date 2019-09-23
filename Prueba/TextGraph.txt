@@ -1,0 +1,46 @@
+A:
+ B:
+  distancia:23
+  AnchoDeBanda:50
+  usuariosConectados:2
+  cantidadDeTrafico:20
+  tipoDeMedio:CAT5
+ C:
+  distancia:32
+  AnchoDeBanda:23
+  usuariosConectados:24
+  cantidadDeTrafico:21
+  tipoDeMedio:WIFI
+ D:
+  distancia:23
+  AnchoDeBanda:50
+  usuariosConectados:2
+  cantidadDeTrafico:20
+  tipoDeMedio:CAT5
+B:
+ A:
+  distancia:23
+  AnchoDeBanda:50
+  usuariosConectados:2
+  cantidadDeTrafico:20
+  tipoDeMedio:CAT5
+C:
+ A:
+  distancia:32
+  AnchoDeBanda:23
+  usuariosConectados:24
+  cantidadDeTrafico:21
+  tipoDeMedio:WIFI
+D:
+ A:
+  distancia:23
+  AnchoDeBanda:50
+  usuariosConectados:2
+  cantidadDeTrafico:20
+  tipoDeMedio:CAT5
+ C:
+  distancia:23
+  AnchoDeBanda:50
+  usuariosConectados:2
+  cantidadDeTrafico:20
+  tipoDeMedio:CAT5

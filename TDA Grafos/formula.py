@@ -1,13 +1,16 @@
 #Formula para el peso
 import math
 """
-FORMULA = (confiabilidad * ancho) - (usuarios + trafico)
+FORMULA = anchoDeBanda/confiabilidad - anchoDeBanda
+
+Formula = 
+
 hola = {"A": "holaaa"}
 
-*distancia,
-ancho de banda,
-cantidad de usuarios,
-cantidad de trafico,
+* ^distancia (+),
+* ^ancho de banda (-),
+  ^cantidad de usuarios (+),
+  ^cantidad de trafico (+),
 *tipo de medio(relacion con la distancia)
 
 Confiabilidad(double trust, double distance, trustworthiness = 1):
@@ -60,39 +63,45 @@ def getTrust(mediumType, distance):
     trust = 0.00
 
     if(mediumType == "CAT5"):
-        if (distance >= 50):
-            n = math.floor(distance/50)
-            trust = 0.0002*n
+        n = distance/50
+        trust = 0.0002*n
 
     elif(mediumType == "CAT6"):
-        if (distance >= 50):
-            n = math.floor(distance/50)
-            trust = 0.0001*n
+        n = distance/50
+        trust = 0.0001*n
 
     elif(mediumType == "Fibra"):
-        if (distance >= 100):
-            n = math.floor(distance/100)
-            trust = 0.0005*n
+        n = distance/100
+        trust = 0.0005*n
 
     elif(mediumType == "WIFI"):
-        if (distance >= 6):
-            n = math.floor(distance/6)
-            trust = 0.006*n
+        n = distance/6
+        trust = 0.006*n
 
     elif(mediumType == "Coaxial"):
-        if (distance >= 100):
-            n = math.floor(distance/100)
-            trust = 0.0004*n
+        n = distance/100
+        trust = 0.0004*n
 
     else:
-        if(distance >= 100):
-            n = math.floor(distance/100)
-            trust = 0.0001*n
+        n = distance/100
+        trust = 0.0001*n
 
-    return (float(trustworthiness) - trust)
+    return (float(trustworthiness) - trustworthiness*trust)
 
+
+def getWeight(distance, bandwidth, users, traffic, medium):
+
+    return round( ((bandwidth/getTrust(medium, distance) - bandwidth) + ((users+traffic)/bandwidth  ))*10 , 3)
+
+<<<<<<< HEAD
 formula1 = (getTrust("WIFI", 6)/15) +(3 + 4)
 print(round(formula1,2))
 
 formula2 = (getTrust("WIFI", 4)/10) +(1 + 4)
 print(round(formula2,2))
+=======
+
+print(getWeight(1, 5, 1, 2, "WIFI"))
+print(getWeight(1, 5, 2, 5, "WIFI"))
+print(getWeight(100, 20, 10, 20, "WIFI"))
+>>>>>>> 812c262139cacc4c3497b9b4dfabd1229d1c37b0

@@ -9,9 +9,7 @@ class Graph:
         self.vertices["%s" %(vertex.name)] = vertex
 
     def addEdge(self, origin, destination, weight):
-        if(isinstance(origin, Vertex) and isinstance(destination, Vertex)):
-            self.addEdgeInner(origin, destination, weight)
-        
-
-    def addEdgeInner(self, origin, destination, weight):
         self.vertices[str(origin.name)].setEdgeWith(destination.name, weight)
+
+graph = Graph()
+graph.addVertex(Vertex("A"))
